@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Belgrano&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/095f0a2654.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/styles.css" />
-    <title>Weather application</title>
-  </head>
-  <body>
-    <div class="container">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Belgrano&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/095f0a2654.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="src/styles.css" />
+  <title>Weather application</title>
+</head>
+
+<body>
+  <div class="container">
 
     <div class="weather-container">
       <div class="clearfix">
@@ -50,13 +39,24 @@
           </div>
           <div class="weather-detail__text" id="weather-description"></div>
         </div>
-<div class="weather-forcast">
-  <div class="row">
-    <div class="col-2">
-      Thursday
-    </div>
-  </div>
-</div>
+        <div class="weather-forcast">
+          <div class="row">
+            <div class="col-2">
+              <div class="weather-forcast-date">
+                Thursday
+              </div>
+              <img src="https://openweathermap.org/img/wn/50d@2x.png" alt="" width="36">
+              <div class="weather-forcast-temp">
+                <span class="weather-forcast-temp-max">
+                  45°
+                </span>
+                <span class="weather-forcast-temp-min">
+                  0°
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-6">
             <div class="clearfix">
@@ -140,16 +140,11 @@
     </div>
     <span>
       <p class="created">
-        <span
-          ><a
-            target="_blank"
-            href="https://github.com/ferizana92/Vanilla.Peoject7"
-            >open source code</a
-          ></span
-        >
+        <span><a target="_blank" href="https://github.com/ferizana92/Vanilla.Peoject7">open source code</a></span>
         , by Ferizana92
       </p>
     </span>
     <script src="src/app.js"></script>
-  </body>
+</body>
+
 </html>

@@ -165,3 +165,7 @@ input[type="text"] {
     border-radius: 1px;
     border: 1px solid #e9e9e9;
 }
+.weather-forcast-date{
+    font-size: 16px;
+    color: chocolate;
+}
