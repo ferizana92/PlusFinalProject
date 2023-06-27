@@ -32,12 +32,16 @@ input[type="text"] {
     height: 44px;
 }
 
+.container{
+    text-align: center;
+    padding-left: 240px;
+}
 .weather-summary {
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .weather-summary-header {
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .weather-detail__text {
@@ -51,7 +55,8 @@ input[type="text"] {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
     margin: 20px 0;
     max-width: 630px;
-    padding: 20px 16px 24px 16px;
+    padding: 25px 30px 30px 25px;
+    justify-items: center;
 }
 
 .weather__icon {
@@ -168,4 +173,8 @@ input[type="text"] {
 .weather-forcast-date{
     font-size: 16px;
     color: chocolate;
+}
+.created{
+    font-size: 12px;
+    text-align:start;
 }
