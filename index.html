@@ -1,146 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belgrano&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/095f0a2654.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>Weather application</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Belgrano&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/095f0a2654.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <link rel="stylesheet" href="src/styles.css" />
-  <title>Weather application</title>
-</head>
+  <body>
+    <div class="container" id="container">
+      <div class="mask d-flex align-items-center h-100">
+        <div class="border border-3 p-4 mt-6">
+          <div class="clearfix">
+            <form class="row g-3" id="form-search">
+              <div class="col-md-8">
+                <input
+                  type="search"
+                  class="form-control rounded-pill"
+                  placeholder="Enter a city name"
+                  id="search-input"
+                />
+              </div>
+              <div class="col-md-4">
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic mixed styles example"
+                >
+                  <button type="submit" id="btn-search" class="btn btn-primary">
+                    search
+                  </button>
 
-<body>
-  <div class="container">
-
-    <div class="weather-container">
-      <div class="clearfix">
-        <form id="weather__form" class="float-left">
-          <input type="text" id="weather__form-location" placeholder="Enter a city" autocomplete="off" autofocus="on">
-          <input type="submit" value="Search" class="btn btn-primary">
-
-        </form>
-        <button id="weather-refresh" class="float-left btn btn-success">Current Location</button>
-      </div>
-      <div class="weather-summary">
-        <div class="weather-summary-header">
-          <h1 id="weather-location"></h1>
-          <div id="weather-date" class="weather-detail__text">
+                  <button
+                    type="button"
+                    id="current-location-button"
+                    class="btn btn-success"
+                  >
+                    current
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="weather-detail__text" id="weather-description"></div>
-        </div>
-        <div class="weather-forcast" id="forecast">
+
           <div class="row">
-            <div class="col-2">
-              <div class="weather-forcast-date">
-                Thursday
-              </div>
-              <img src="https://openweathermap.org/img/wn/50d@2x.png" alt="" width="36">
-              <div class="weather-forcast-temp">
-                <span class="weather-forcast-temp-max">
-                  45°
-                </span>
-                <span class="weather-forcast-temp-min">
-                  0°
-                </span>
-              </div>
+            <div class="col-md-4 mt-5"><h1 id="city"></h1></div>
+            <div class="col-md-4 mt-5" id="localTime"></div>
+            <div class="col-md-4 mt-5" id="description"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <span id="temperature" class="fs-2"></span
+              ><span class="active">°C </span>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="clearfix">
-              <img class="weather__icon weather__icon--today">
-              <div class="weather-temp weather-temp--today">
-
-              </div>
-              <div class="weather-unit__text weather-unit__text--today">
-                °C
-              </div>
+            <div class="col-md-4">
+              <div>Humidity: <span id="humidity"></span></div>
+              <div>Wind: <span id="wind"></span></div>
             </div>
+            <div class="col-md-4 mt-0"><img id="icon" /></div>
           </div>
-          <div class="col-md-6">
-            <div class="weather-detail__text">
-              Precipitation: <span id="precipitation-probality"></span>
-            </div>
-            <div class="weather-detail__text">
-              Wind: <span id="wind-speed"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="days clearfix">
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
-        </div>
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
-        </div>
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
-        </div>
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
-        </div>
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
-        </div>
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
-        </div>
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
-        </div>
-        <div class="day__block">
-          <div class="day__block-date"></div>
-          <img class="day__block-image">
-          <div class="day__block-temps">
-            <span class="day__block-temp"></span>
-          </div>
+          <div class="weather-forcast" id="forcast"></div>
         </div>
       </div>
     </div>
     <span>
-      <p class="created">
-        <span><a target="_blank" href="https://github.com/ferizana92/PlusFinalProject">open source code</a></span>
+      <p class="d-flex justify-content-center">
+        <span
+          ><a
+            target="_blank"
+            href="https://github.com/ferizana92/PlusFinalProject"
+            >open source code</a
+          ></span
+        >
         , by Ferizana92
       </p>
     </span>
     <script src="src/app.js"></script>
-</body>
-
+  </body>
 </html>

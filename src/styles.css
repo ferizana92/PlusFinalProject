@@ -1,5 +1,7 @@
 body {
     font-family: arial, sans-serif;
+    text-align: center;
+    margin-left: 20px;
 }
 
 h1 {
@@ -16,15 +18,7 @@ button {
     top: 1px;
 }
 
-input[type="text"] {
-    border-radius: 2px;
-    border: none;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-    height: 44px;
-    outline: 0;
-    padding: 10px;
-    width: 300px;
-}
+
 
 .btn {
     border-radius: 2px;
@@ -32,10 +26,7 @@ input[type="text"] {
     height: 44px;
 }
 
-.container{
-    text-align: center;
-    padding-left: 240px;
-}
+
 .weather-summary {
     padding-bottom: 25px;
 }
@@ -178,3 +169,21 @@ input[type="text"] {
     font-size: 12px;
     text-align:start;
 }
+#icon{
+    margin-top: -20px;
+}
+ul li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    line-height: 35px;
+
+  }
+  #container{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
